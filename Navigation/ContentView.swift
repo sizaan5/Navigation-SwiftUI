@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailView: View {
+/*struct DetailView: View {
     var number: Int
     //@Binding var path: [Int]
     @Binding var path: NavigationPath
@@ -54,21 +54,42 @@ struct DetailView: View {
             print("Failed to save navigation data")
         }
     }
-}
+}*/
 
 
 struct ContentView: View {
 //    @State private var path: [Int] = []
 //    @State private var path = NavigationPath()
-    @State private var pathStore = PathStore()
+//    @State private var pathStore = PathStore()
+    @State private var title = "SwiftUI"
     
     var body: some View {
-        NavigationStack(path: $pathStore.path) {
+        NavigationStack {
+            List(0..<4) { i in
+                Text("Row \(i)")
+            }
+            .navigationTitle($title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.blue)
+            .toolbarColorScheme(.dark)
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarLeading) {
+                    Button("Tap me") {
+                        
+                    }
+                    
+                    Button("Tap me") {
+                        
+                    }
+                }
+            }
+        }
+        /*NavigationStack(path: $pathStore.path) {
             DetailView(number: 0, path: $pathStore.path)
                 .navigationDestination(for: Int.self) { i in
                     DetailView(number: i, path: $pathStore.path)
                 }
-        }
+        }*/
         /*NavigationStack(path: $path) {
             List {
                 ForEach(0..<5) { i in
